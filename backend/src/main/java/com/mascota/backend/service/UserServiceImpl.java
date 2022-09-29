@@ -1,13 +1,11 @@
 package com.mascota.backend.service;
 
-
 import com.mascota.backend.model.User;
 import com.mascota.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired

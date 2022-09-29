@@ -5,28 +5,29 @@ import com.mascota.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@RestController
-@RequestMapping("/user")
+@Controller
+@RequestMapping
 public class UserController {
     @Autowired
     private UserService userService;
 
     @PostMapping("/add")
-    public String add(@RequestBody User user) {
+    public String add(@RequestBody User user, RedirectAttributes redirectAttributes) {
         userService.save(user);
-        return ("new user");
+       redirectAttributes.addFlashAttribute("user", user);
+        return "redirect:/";
     }
 
-    @GetMapping("/all")
-    public List<User> getAll() {
-        return userService.getAll();
-    }
 
+   /*
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
         userService.delete(id);
@@ -56,5 +57,5 @@ public class UserController {
         }
     }
 
-
+*/
 }
