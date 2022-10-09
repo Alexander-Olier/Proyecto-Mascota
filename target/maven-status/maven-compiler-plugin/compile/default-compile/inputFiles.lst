@@ -1,0 +1,11 @@
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/BackendApplication.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/service/PostServiceImpl.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/controller/PostController.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/repository/PostRepository.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/repository/UserRepository.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/service/UserServiceImpl.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/service/PostService.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/controller/UserController.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/model/Post.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/model/User.java
+/home/olier/Documents/project/mTic/Proyecto-Mascota/backend/src/main/java/com/mascota/backend/service/UserService.java

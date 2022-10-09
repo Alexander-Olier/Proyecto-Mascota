@@ -1,0 +1,11 @@
+com/mascota/backend/controller/UserController.class
+com/mascota/backend/service/PostService.class
+com/mascota/backend/service/UserServiceImpl.class
+com/mascota/backend/BackendApplication.class
+com/mascota/backend/controller/PostController.class
+com/mascota/backend/service/PostServiceImpl.class
+com/mascota/backend/model/Post.class
+com/mascota/backend/repository/UserRepository.class
+com/mascota/backend/repository/PostRepository.class
+com/mascota/backend/model/User.class
+com/mascota/backend/service/UserService.class
