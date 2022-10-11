@@ -19,13 +19,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/add")
-    public String add(@RequestBody User user, RedirectAttributes redirectAttributes) {
-        userService.save(user);
-       redirectAttributes.addFlashAttribute("user", user);
-        return "redirect:/";
+    @RequestMapping("/new")
+    public String newUSer(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "register";
     }
 
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveUser(RedirectAttributes redirectAttributes, User user) {
+        userService.save(user);
+        redirectAttributes.addFlashAttribute("user", user);
+        return "redirect:/home";
+    }
+
+    @RequestMapping("/home")
+    public String home(Model model) {
+        return "home";
+    }
 
    /*
     @DeleteMapping("/delete/{id}")

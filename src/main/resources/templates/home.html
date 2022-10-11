@@ -20,8 +20,7 @@
             <li><a href="">Notification</a></li>
             <li class="nav-item dropdown ms-auto">
                 <a class="dropdown-toggle" href="#" role="button"
-                   data-bs-toggle="dropdown" aria-expanded="false">
-                    user
+                   data-bs-toggle="dropdown" aria-expanded="false" th:text="${user.name}">
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -40,7 +39,7 @@
                 </ul>
             </div>
             <div class="col-7">
-                <div>
+                <div th:each="post:${posts}">
                     <div class="card container m-4">
                         <div class="d-flex">
                             <h4>user 1</h4>
@@ -59,44 +58,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book. It has
-                            survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-                    </div>
-                    <div>
-                        <div class="card container m-4">
-                            <div class="d-flex">
-                                <h4>user 1</h4>
-                                <div class="nav-item dropdown ms-auto">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                                       data-bs-toggle="dropdown" aria-expanded="false">
-                                        Link
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-                        </div>
+                        <p th:text="${post.descr}"></p>
                     </div>
                 </div>
             </div>

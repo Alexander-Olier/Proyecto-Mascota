@@ -16,16 +16,16 @@
     <div class="col-7 container m-auto">
         <div class="m-5">
             <h1>Register</h1>
-            <form>
+            <form th:action="@{/save}" th:object="${user}" method="post">
                 <label for="exampleInputName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" th:field="*{name}">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{mail}">
                 <label for="exampleInputEmail1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword" aria-describedby="emailHelp">
+                <input type="password" class="form-control" id="exampleInputPassword" aria-describedby="emailHelp" th:field="*{password}">
                 <input type="submit" value="Login in" class="mt-3 btn form-control btn-primary bg-dark border-0">
             </form>
-            <p class="mt-2">¿Tienes una cuenta? <a href="login.html">Ingresar</a></p>
+            <p class="mt-2">¿Tienes una cuenta? <a href="/">Ingresar</a></p>
         </div>
 
     </div>
