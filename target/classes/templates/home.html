@@ -15,7 +15,7 @@
             <h4>Mascota</h4>
         </div>
         <ul class="nav gap-4 justify-content-end ms-auto">
-            <li><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>+</span></a></li>
+            <li><a type="button" href="/newPost"><span>+</span></a></li>
             <li><a href="">Home</a></li>
             <li><a href="">Notification</a></li>
             <li class="nav-item dropdown ms-auto">
@@ -42,7 +42,7 @@
                 <div th:each="post:${posts}">
                     <div class="card container m-4">
                         <div class="d-flex">
-                            <h4>user 1</h4>
+                            <h4 th:text="${post.user.name}"></h4>
                             <div class="nav-item dropdown ms-auto">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -66,29 +66,6 @@
                 <div class="bg-img">
 
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Publicación</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <textarea class="form-control" placeholder="Description" id="floatingTextarea2"></textarea>
-                    <input type="text" class="mt-3 form-control" placeholder="Recompensa" id="exampleInputPassword"
-                           aria-describedby="emailHelp">
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add</button>
             </div>
         </div>
     </div>
