@@ -16,7 +16,7 @@
     <div class="col-7 container m-auto">
         <div class="m-5">
             <h1>Register</h1>
-            <form th:action="@{/save}" th:object="${user}" method="post">
+            <form action="#" th:action="@{/add}" th:object="${user}" method="post">
                 <label for="exampleInputName" class="form-label">Name</label>
                 <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" th:field="*{name}">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
