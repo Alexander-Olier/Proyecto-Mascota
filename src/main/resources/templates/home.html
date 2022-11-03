@@ -15,7 +15,7 @@
             <h4>Mascota</h4>
         </div>
         <ul class="nav gap-4 justify-content-end ms-auto">
-            <li><a type="button" href="/add/"><span>+</span></a></li>
+            <li><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>+</span></a></li>
             <li><a href="">Home</a></li>
             <li><a href="">Notification</a></li>
             <li class="nav-item dropdown ms-auto">
@@ -65,6 +65,34 @@
             <div class="col-3">
                 <div class="bg-img">
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"th:text="${user.id}"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" th:action="@{/addPost/}+${user.id}" th:object="${postSave}" method="post">
+                        <textarea class="form-control" placeholder="Description" id="floatingTextarea2"
+                                  th:field="*{descr}"></textarea>
+                        <input type="text" class="mt-3 form-control" placeholder="Recompensa" id="exampleInputPassword"
+                               aria-describedby="emailHelp" th:field="*{recompensa}">
+
+                        <input type="submit" value="Login in"
+                               class="mt-3 btn form-control btn-primary bg-dark border-0">
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add</button>
                 </div>
             </div>
         </div>
