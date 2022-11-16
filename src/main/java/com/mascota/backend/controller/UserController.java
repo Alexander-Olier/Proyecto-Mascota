@@ -28,7 +28,10 @@ public class UserController {
         redirectAttributes.addFlashAttribute("user", user);
         return "redirect:/home/" + user.getId();
     }
-
+    @GetMapping("/user/{id}")
+    public String userOne(Model model){
+        return "user";
+    }
     //login
     @GetMapping("/")
     public String login(Model model) {
@@ -56,4 +59,5 @@ public class UserController {
         }
         return "error";
     }
+
 }

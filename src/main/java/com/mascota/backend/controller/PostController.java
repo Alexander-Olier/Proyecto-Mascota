@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping
@@ -23,19 +24,25 @@ public class PostController {
     @GetMapping("/home/{id}")
     public String home(Model model) {
         List<Post> posts = postRepository.findAll();
-        model.addAttribute("postSave", new Post());
         model.addAttribute("posts", posts);
         return "home";
     }
 
-    @PostMapping("/addPost/{id}")
-    public String savePost(@ModelAttribute @PathVariable(value = "id") Integer id, @RequestBody Post postRequest, RedirectAttributes redirectAttributes) {
+    @GetMapping("/newpost/{id}")
+    public String addPost(@PathVariable(value = "id") Integer id, Model model) {
+        User user = userRepository.getReferenceById(id);
+        model.addAttribute("postSave", new Post());
+        model.addAttribute("user", user);
+        return "add";
+    }
+
+    @PostMapping("/newPost/{id}")
+    public String savePost(@PathVariable(value = "id") Integer id, @ModelAttribute Post postRequest, RedirectAttributes redirectAttributes, Model model) {
         Post post = userRepository.findById(id).map(user -> {
             postRequest.setUser(user);
+            model.addAttribute("user", user);
             return postRepository.save(postRequest);
         }).orElseThrow();
-        List<Post> allPost =postRepository.findAll();
-        redirectAttributes.addFlashAttribute("post", allPost);
         redirectAttributes.addFlashAttribute("user", post.getUser());
         return "redirect:/home/" + post.getUser().getId();
     }

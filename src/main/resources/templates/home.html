@@ -15,7 +15,7 @@
             <h4>Mascota</h4>
         </div>
         <ul class="nav gap-4 justify-content-end ms-auto">
-            <li><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>+</span></a></li>
+            <li><a type="button" th:href="@{/newpost/{id}(id=${user.id})}"><span>+</span></a></li>
             <li><a href="">Home</a></li>
             <li><a href="">Notification</a></li>
             <li class="nav-item dropdown ms-auto">
@@ -23,7 +23,7 @@
                    data-bs-toggle="dropdown" aria-expanded="false" th:text="${user.name}">
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" th:href="@{/user/{id}(id=${user.id})}">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Log Out</a></li>
                 </ul>
             </li>
@@ -74,22 +74,10 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel"th:text="${user.id}"></h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="${user.id}"></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form action="#" th:action="@{/addPost/}+${user.id}" th:object="${postSave}" method="post">
-                        <textarea class="form-control" placeholder="Description" id="floatingTextarea2"
-                                  th:field="*{descr}"></textarea>
-                        <input type="text" class="mt-3 form-control" placeholder="Recompensa" id="exampleInputPassword"
-                               aria-describedby="emailHelp" th:field="*{recompensa}">
 
-                        <input type="submit" value="Login in"
-                               class="mt-3 btn form-control btn-primary bg-dark border-0">
-
-                    </form>
-
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Add</button>
