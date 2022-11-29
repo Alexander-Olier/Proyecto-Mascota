@@ -46,5 +46,15 @@ public class PostController {
         redirectAttributes.addFlashAttribute("user", post.getUser());
         return "redirect:/home/" + post.getUser().getId();
     }
-
+    @GetMapping("/post/delete/{id}")
+    public String deletePost(@ModelAttribute @PathVariable("id")int id){
+        try {
+            Post post = postRepository.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
+            postRepository.deleteById(post.getId());
+            return ("redirect:/user/"+post.getUser().getId());
+        } catch (Exception e) {
+            return ("error");
+        }
+    }
 }

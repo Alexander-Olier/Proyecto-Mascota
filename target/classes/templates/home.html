@@ -24,7 +24,8 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" th:href="@{/user/{id}(id=${user.id})}">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Log Out</a></li>
+                    <li><a class="dropdown-item" th:href="@{/edit/{id}(id=${user.id})}">Update user</a></li>
+                    <li><a class="dropdown-item" th:href="@{/delete/{id}(id=${user.id})}">Delete user</a></li>
                 </ul>
             </li>
         </ul>
