@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1 th:text="${user.name}"></h1>
-<form action="#" th:action="@{/newPost/{id}(id=${user.id})}" th:object="${post}" method="post">
+<form action="#" th:action="@{/post/update/{id}(id=${post.id})}" th:object="${post}" method="post">
     <textarea class="form-control" placeholder="Description" id="floatingTextarea2"
               th:field="*{descr}"></textarea>
     <input type="text" class="mt-3 form-control" placeholder="reward" id="exampleInputPassword"

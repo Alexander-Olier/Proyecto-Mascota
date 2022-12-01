@@ -28,10 +28,10 @@ public class PostController {
         return "home";
     }
 
-    @GetMapping("/newpost/{id}")
+    @GetMapping("/post/new/{id}")
     public String addPost(@PathVariable(value = "id") Integer id, Model model) {
         User user = userRepository.getReferenceById(id);
-        model.addAttribute("postSave", new Post());
+        model.addAttribute("post", new Post());
         model.addAttribute("user", user);
         return "add";
     }
@@ -46,15 +46,41 @@ public class PostController {
         redirectAttributes.addFlashAttribute("user", post.getUser());
         return "redirect:/home/" + post.getUser().getId();
     }
+
     @GetMapping("/post/delete/{id}")
-    public String deletePost(@ModelAttribute @PathVariable("id")int id){
+    public String deletePost(@ModelAttribute @PathVariable("id") int id) {
         try {
             Post post = postRepository.findById(id)
                     .orElseThrow(() -> new IllegalArgumentException("Invalid post Id:" + id));
             postRepository.deleteById(post.getId());
-            return ("redirect:/user/"+post.getUser().getId());
+            return ("redirect:/user/" + post.getUser().getId());
         } catch (Exception e) {
             return ("error");
         }
     }
+
+    @GetMapping("/post/edit/{id}")
+    public String edit(Model model, @PathVariable("id") int id) {
+        Post post = postRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid post id:" + id));
+        model.addAttribute("post", post);
+        model.addAttribute("user", post.getUser());
+        return "updatePost";
+    }
+
+    @PostMapping("/post/update/{id}")
+    public String update(@ModelAttribute Post post, @PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        List<Post> posts = postRepository.findAll();
+        Post postList = null;
+        for (int i = 0; i < posts.size(); i++) {
+            postList = posts.get(i);
+            if (postList.getId() == post.getId()) {
+                postList.setDescr(post.getDescr());
+                postList.setReward(post.getReward());
+                postRepository.save(postList);
+            }
+        }
+        return "redirect:/user/" + postList.getUser().getId();
+    }
+
 }
