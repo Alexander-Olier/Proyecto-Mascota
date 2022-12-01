@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1 th:text="${user.name}"></h1>
+<form action="#" th:action="@{/post/update/{id}(id=${post.id})}" th:object="${post}" method="post">
+    <textarea class="form-control" placeholder="Description" id="floatingTextarea2"
+              th:field="*{descr}"></textarea>
+    <input type="text" class="mt-3 form-control" placeholder="reward" id="exampleInputPassword"
+           aria-describedby="emailHelp" th:field="*{reward}">
+
+    <input type="submit" value="Login in"
+           class="mt-3 btn form-control btn-primary bg-dark border-0">
+
+</form>
+
+</body>
+</html>

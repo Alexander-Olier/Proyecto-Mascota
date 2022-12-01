@@ -3,18 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 </head>
 <body>
 <div>
-    <div>
+    <div class="mx-5 py-5 d-flex">
         <div>
-         
+            <h4>Mascota</h4>
         </div>
-        <h1>Post</h1>
-        <div th:each="post: ${posts}">
-            <p th:text=${post.descr}></p>
+        <ul class="nav gap-4 justify-content-end ms-auto">
+            <li><a type="button" th:href="@{/post/new/{id}(id=${user.id})}"><span>+</span></a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Notification</a></li>
+            <li class="nav-item dropdown ms-auto">
+                <a class="dropdown-toggle" href="#" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false" th:text="${user.name}">
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/user/{id}(id=${user.id})}">Profile</a></li>
+                    <li><a class="dropdown-item" th:href="@{/edit/{id}(id=${user.id})}">Update user</a></li>
+                    <li><a class="dropdown-item" th:href="@{/delete/{id}(id=${user.id})}">Delete user</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <h4>Etiquetas</h4>
+                <ul>
+                    <li><a href="">Tutorias</a></li>
+                    <li><a href="">Desaparecidos</a></li>
+                </ul>
+            </div>
+            <div class="col-7">
+                <div th:each="post:${posts}">
+                    <div class="card container m-4">
+                        <div class="d-flex">
+                            <h4 th:text="${post.user.name}"></h4>
+                            <div class="nav-item dropdown ms-auto">
+                                <a class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Link
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p th:text="${post.descr}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="bg-img">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="${user.id}"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
 </html>

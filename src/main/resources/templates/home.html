@@ -15,17 +15,17 @@
             <h4>Mascota</h4>
         </div>
         <ul class="nav gap-4 justify-content-end ms-auto">
-            <li><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><span>+</span></a></li>
+            <li><a type="button" th:href="@{/post/new/{id}(id=${user.id})}"><span>+</span></a></li>
             <li><a href="">Home</a></li>
             <li><a href="">Notification</a></li>
             <li class="nav-item dropdown ms-auto">
                 <a class="dropdown-toggle" href="#" role="button"
-                   data-bs-toggle="dropdown" aria-expanded="false">
-                    user
+                   data-bs-toggle="dropdown" aria-expanded="false" th:text="${user.name}">
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Log Out</a></li>
+                    <li><a class="dropdown-item" th:href="@{/user/{id}(id=${user.id})}">Profile</a></li>
+                    <li><a class="dropdown-item" th:href="@{/edit/{id}(id=${user.id})}">Update user</a></li>
+                    <li><a class="dropdown-item" th:href="@{/delete/{id}(id=${user.id})}">Delete user</a></li>
                 </ul>
             </li>
         </ul>
@@ -40,10 +40,10 @@
                 </ul>
             </div>
             <div class="col-7">
-                <div>
+                <div th:each="post:${posts}">
                     <div class="card container m-4">
                         <div class="d-flex">
-                            <h4>user 1</h4>
+                            <h4 th:text="${post.user.name}"></h4>
                             <div class="nav-item dropdown ms-auto">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,44 +59,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book. It has
-                            survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged. It was popularised in the 1960s with the release of
-                            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-                    </div>
-                    <div>
-                        <div class="card container m-4">
-                            <div class="d-flex">
-                                <h4>user 1</h4>
-                                <div class="nav-item dropdown ms-auto">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                                       data-bs-toggle="dropdown" aria-expanded="false">
-                                        Link
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-                        </div>
+                        <p th:text="${post.descr}"></p>
                     </div>
                 </div>
             </div>
@@ -107,26 +70,19 @@
             </div>
         </div>
     </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Publicación</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <textarea class="form-control" placeholder="Description" id="floatingTextarea2"></textarea>
-                    <input type="text" class="mt-3 form-control" placeholder="Recompensa" id="exampleInputPassword"
-                           aria-describedby="emailHelp">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel" th:text="${user.id}"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Add</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add</button>
+                </div>
             </div>
         </div>
     </div>

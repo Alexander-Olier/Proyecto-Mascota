@@ -1,5 +1,10 @@
 package com.mascota.backend.model;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+
 @Entity
 @Table(name = "post")
 public class Post {
@@ -9,10 +14,12 @@ public class Post {
     private int id;
     @Column(columnDefinition = "TEXT")
     private String descr;
-    private double recompensa;
-    @JoinColumn(name = "FK_User", nullable = false, updatable = false)
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private double reward;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_user", referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
+
     public Post (){
 
     }
@@ -29,15 +36,17 @@ public class Post {
     public void setDescr(String descr) {
         this.descr = descr;
     }
-    public double getRecompensa() {
-        return recompensa;
+    public double getReward() {
+        return reward;
     }
-    public void setRecompensa(double recompensa) {
-        this.recompensa = recompensa;
+    public void setReward(double reward) {
+        this.reward = reward;
     }
+
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
     }
