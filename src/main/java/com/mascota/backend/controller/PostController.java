@@ -22,9 +22,12 @@ public class PostController {
     private UserRepository userRepository;
 
     @GetMapping("/home/{id}")
-    public String home(Model model) {
+    public String home(Model model, @PathVariable("id") int id) {
         List<Post> posts = postRepository.findAll();
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         model.addAttribute("posts", posts);
+        model.addAttribute("user", user);
         return "home";
     }
 

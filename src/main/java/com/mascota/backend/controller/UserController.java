@@ -30,7 +30,6 @@ public class UserController {
     @PostMapping("/add")
     public String add(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
         userRepository.save(user);
-        redirectAttributes.addFlashAttribute("user", user);
         return "redirect:/home/" + user.getId();
     }
 

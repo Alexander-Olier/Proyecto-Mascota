@@ -11,7 +11,7 @@
 <body>
 <div class="mx-5 py-5 d-flex">
     <div>
-        <h4>Mascota</h4>
+        <a th:href="@{/home/{id}(id=${user.id})}"><h4>Mascota</h4></a>
     </div>
     <ul class="nav gap-4 justify-content-end ms-auto">
         <li><a type="button" th:href="@{/post/new/{id}(id=${user.id})}"><span>+</span></a></li>
