@@ -15,8 +15,8 @@
 <div class="row screen">
     <div class="col-7 container m-auto">
         <div class="m-5">
-            <h1>Register</h1>
-            <form action="#" th:action="@{/add}" th:object="${user}" method="post">
+            <h1>Update</h1>
+            <form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
                 <label for="exampleInputName" class="form-label">Name</label>
                 <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" th:field="*{name}">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
@@ -30,7 +30,7 @@
 
     </div>
     <div class="col-5">
-        <img th:src="@{/img/Vector.png}" width="100%" height="100%">
+        <img src="./img/vector2.png" width="100%" height="100%">
     </div>
 </div>
 </body>
